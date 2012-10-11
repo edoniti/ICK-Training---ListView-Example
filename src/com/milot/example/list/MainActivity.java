@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,20 +38,20 @@ public class MainActivity extends ListActivity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
-    
+
     class PersonCustomAdapter extends ArrayAdapter<Person>
     {
 
 		public PersonCustomAdapter() {
 			super(MainActivity.this, R.layout.list_row, lista);
 		}
-		
+
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder holder = null;
 			View row = convertView;
 			final int _position = position;
-			
+
 			if (row == null) {
 				LayoutInflater inflater = getLayoutInflater();
 				row = inflater.inflate(R.layout.list_row, parent, false);
@@ -59,23 +60,21 @@ public class MainActivity extends ListActivity {
 			} else {
 				holder = (ViewHolder) row.getTag();
 			}
-			
+
 			holder.getName().setText(lista.get(position).getName() + lista.get(position).getLastname());
 			holder.getDescription().setText(lista.get(position).getDescription());
-			
+
 			row.setBackgroundResource(R.drawable.selected_state);
-			
+
 			row.setOnClickListener(new View.OnClickListener() {
 
 				public void onClick(View v) {
-					Toast.makeText(MainActivity.this, lista.get(_position).getName(), Toast.LENGTH_LONG).show();
-					
+					Intent i = new Intent(MainActivity.this, detalet.class);
+					startActivity(i);
 				}
 			});
-						
-			
+
 			return row;
 		}
-    			
     }
 }
