@@ -66,8 +66,7 @@ public class MainActivity extends ListActivity {
 			row.setBackgroundResource(R.drawable.selected_state);
 			
 			row.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
+
 				public void onClick(View v) {
 					Toast.makeText(MainActivity.this, lista.get(_position).getName(), Toast.LENGTH_LONG).show();
 					
